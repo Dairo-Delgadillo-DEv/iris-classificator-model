@@ -1,0 +1,15 @@
+# TODO: Crear service.yaml
+# Este archivo expone el deployment a través de Kubernetes Service
+# Incluirá:
+# - Tipo de servicio (ClusterIP, LoadBalancer, NodePort)
+# - Selectores de pods
+# - Puertos
+# - Reglas de load balancing
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: iris-classifier-service
+  
+spec:
+  # TODO: Implementar

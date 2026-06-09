@@ -1,0 +1,17 @@
+# TODO: Crear deployment.yaml
+# Este archivo define cómo desplegar en Kubernetes
+# Incluirá:
+# - Número de réplicas
+# - Imagen Docker a usar
+# - Recursos (CPU, memoria)
+# - Variables de entorno
+# - Health checks
+# - Estrategia de actualización
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: iris-classifier
+  
+spec:
+  # TODO: Implementar

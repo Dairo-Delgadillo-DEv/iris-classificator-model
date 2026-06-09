@@ -1,0 +1,24 @@
+name: Integración Continua (CI) - MLOps
+
+on:
+    push:
+        branches: ["main", "master"] # Se ejecuta cuando subes código a la rama principal
+    pull_request:
+        branches: ["main", "master"]
+
+jobs:
+    build-and-test:
+        runs-on: ubuntu-latest # Una máquina virtual limpia en la nube
+
+        steps:
+            # 1. Traer tu código al servidor de GitHub
+            - name: Checkout del código
+              uses: actions/checkout@v4
+
+            # 2. Verificar que la imagen de Docker se construye correctamente
+            - name: Construir imagen de Docker de prueba
+              run: docker build -t modelo-app:test .
+
+        # (Opcional por ahora) Aquí podrías correr un script de test rápido si lo tuvieras
+        # - name: Ejecutar pruebas
+        #   run: docker run modelo-app:test python test_inference.py

@@ -1,0 +1,29 @@
+project_name: Iris Flower Classification MLOps
+model_version: 1.0
+random_seed: 42
+
+data:
+  raw_path: data/raw
+  processed_path: data/processed
+  test_size: 0.2
+  
+model:
+  type: RandomForest
+  hyperparameters:
+    n_estimators: 100
+    max_depth: 10
+    random_state: 42
+    n_jobs: -1
+  
+  target_metrics:
+    accuracy: 0.98
+    precision: 0.98
+    recall: 0.98
+    
+training:
+  epochs: 1
+  batch_size: 32
+  
+logging:
+  log_level: INFO
+  log_file: logs/training.log

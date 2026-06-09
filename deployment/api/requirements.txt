@@ -1,0 +1,21 @@
+"""
+Dependencias específicas para la API FastAPI
+
+Instalación:
+    pip install -r deployment/api/requirements.txt
+"""
+
+# FastAPI y Uvicorn
+fastapi==0.104.1
+uvicorn==0.24.0
+pydantic==2.5.0
+pydantic-settings==2.1.0
+
+# Servidor WSGI para producción
+gunicorn==21.2.0
+
+# HTTP Cliente
+requests==2.31.0
+
+# Utilidades
+python-dotenv==1.0.0

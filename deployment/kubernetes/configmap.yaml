@@ -1,0 +1,14 @@
+# TODO: Crear configmap.yaml
+# Este archivo almacena configuración en Kubernetes
+# Incluirá:
+# - Variables de entorno
+# - Archivos de configuración
+# - Parámetros de la aplicación
+
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: iris-classifier-config
+  
+data:
+  # TODO: Implementar
