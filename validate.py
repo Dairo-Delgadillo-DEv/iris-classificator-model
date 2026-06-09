@@ -1,6 +1,6 @@
 """
 Script para validar que todo funcione correctamente
-
+...
 Uso:
     python validate.py
 """
