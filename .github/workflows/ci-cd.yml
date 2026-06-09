@@ -17,7 +17,7 @@ jobs:
 
             # 2. Verificar que la imagen de Docker se construye correctamente
             - name: Construir imagen de Docker de prueba
-              run: docker build -f deployment/docker/Dockerfile-t modelo-app:test .
+              run: docker build -f deployment/docker/Dockerfile -t modelo-app:test .
 
         # (Opcional por ahora) Aquí podrías correr un script de test rápido si lo tuvieras
         # - name: Ejecutar pruebas
