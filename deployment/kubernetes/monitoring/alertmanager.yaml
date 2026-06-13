@@ -16,8 +16,8 @@ data:
     receivers:
     - name: 'telegram_bot'
       telegram_configs:
-      - bot_token: "REEMPLAZA_CON_TU_TOKEN_DE_TELEGRAM"
-        chat_id: REEMPLAZA_CON_TU_CHAT_ID
+      - bot_token: 8771298033:AAGbsk8GM9h0P453z9sxbIv3jWoFgzHZpyE
+        chat_id: 1943944263
         send_resolved: true
         message: '{{ template "telegram.default.message" . }}'
 ---
@@ -37,18 +37,18 @@ spec:
         app: alertmanager
     spec:
       containers:
-        - name: alertmanager
-          image: prom/alertmanager:latest
-          ports:
-            - containerPort: 9093
-          volumeMounts:
-            - name: alertmanager-config-volume
-              mountPath: /etc/alertmanager/alertmanager.yml
-              subPath: alertmanager.yml
-      volumes:
+      - name: alertmanager
+        image: prom/alertmanager:latest
+        ports:
+        - containerPort: 9093
+        volumeMounts:
         - name: alertmanager-config-volume
-          configMap:
-            name: alertmanager-config
+          mountPath: /etc/alertmanager/alertmanager.yml
+          subPath: alertmanager.yml
+      volumes:
+      - name: alertmanager-config-volume
+        configMap:
+          name: alertmanager-config
 ---
 apiVersion: v1
 kind: Service
@@ -59,6 +59,6 @@ spec:
   selector:
     app: alertmanager
   ports:
-    - port: 9093
-      targetPort: 9093
+  - port: 9093
+    targetPort: 9093
   type: ClusterIP
