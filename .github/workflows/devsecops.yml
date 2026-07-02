@@ -25,14 +25,14 @@ jobs:
         pip install "bandit>=1.7.9" "safety>=3.0.0"
 
     - name: Run Bandit (SAST)
-      # Usa el archivo .bandit para configuración de supresiones documentadas
-      # --exit-zero -> siempre sale con 0, el reporte se genera pero no falla el pipeline
+      # Usa bandit.yaml (formato YAML) para configuración de supresiones documentadas.
+      # B101=assert, B104=0.0.0.0, B301/B403=joblib/pickle → conocidos y aceptados en ML
       run: |
         echo "Escaneando código Python en busca de vulnerabilidades..."
-        bandit -r src/ deployment/api/ -c .bandit -f txt
+        bandit -r src/ deployment/api/ -c bandit.yaml -f txt
 
     - name: Run Safety (SCA)
-      # continue-on-error porque Safety requiere autenticación para la DB completa
+      # continue-on-error porque Safety puede requerir autenticación para BD completa
       run: |
         echo "Escaneando dependencias en busca de paquetes inseguros..."
         safety scan --file requirements.txt --output text
@@ -48,12 +48,21 @@ jobs:
     - name: Build Docker image
       run: docker build -t iris-model:latest -f deployment/docker/Dockerfile .
 
+    - name: Install Trivy
+      # Instalación directa — evita dependencia de aquasecurity/trivy-action
+      # cuya versión interna (setup-trivy) puede no estar disponible en el marketplace
+      run: |
+        curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh \
+          | sh -s -- -b /usr/local/bin
+        trivy --version
+
     - name: Run Trivy vulnerability scanner
-      uses: aquasecurity/trivy-action@v0.28.0
-      with:
-        image-ref: 'iris-model:latest'
-        format: 'table'
-        exit-code: '0'
-        ignore-unfixed: true
-        vuln-type: 'os,library'
-        severity: 'CRITICAL,HIGH'
+      run: |
+        echo "Escaneando imagen Docker en busca de vulnerabilidades..."
+        trivy image \
+          --exit-code 0 \
+          --ignore-unfixed \
+          --vuln-type os,library \
+          --severity CRITICAL,HIGH \
+          --format table \
+          iris-model:latest
