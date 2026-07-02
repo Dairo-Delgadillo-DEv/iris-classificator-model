@@ -4,8 +4,8 @@ FROM python:3.9-slim
 # Establecer el directorio de trabajo
 WORKDIR /app
 
-# Instalar dependencias del sistema requeridas (opcional pero recomendado)
-RUN apt-get update && apt-get install -y --no-install-recommends \
+# Instalar dependencias del sistema requeridas y aplicar parches de seguridad (DevSecOps)
+RUN apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends \
     build-essential \
     && rm -rf /var/lib/apt/lists/*
 

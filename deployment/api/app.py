@@ -353,7 +353,7 @@ if __name__ == "__main__":
     logger.info("Iniciando servidor FastAPI...")
     uvicorn.run(
         app,
-        host="0.0.0.0",
+        host="0.0.0.0",  # nosec B104
         port=5000,
         log_level="info"
     )

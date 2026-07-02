@@ -30,7 +30,7 @@ MODEL_PATH = os.getenv('MODEL_PATH', str(MODELS_DIR / 'iris_model.joblib'))
 SCALER_PATH = os.getenv('SCALER_PATH', str(MODELS_DIR / 'iris_scaler.joblib'))
 
 # API
-API_HOST = os.getenv('API_HOST', '0.0.0.0')
+API_HOST = os.getenv('API_HOST', '0.0.0.0')  # nosec B104
 API_PORT = int(os.getenv('API_PORT', 5000))
 MAX_BATCH_SIZE = int(os.getenv('MAX_BATCH_SIZE', 1000))
 
