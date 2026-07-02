@@ -6,8 +6,9 @@ WORKDIR /app
 
 # Instalar dependencias del sistema requeridas y aplicar parches de seguridad (DevSecOps)
 RUN apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends \
-    build-essential \
-    && rm -rf /var/lib/apt/lists/*
+    build-essential python3-dev && \
+    pip install --upgrade pip setuptools wheel && \
+    rm -rf /var/lib/apt/lists/*
 
 # Copiar el archivo de dependencias
 COPY requirements.txt .
