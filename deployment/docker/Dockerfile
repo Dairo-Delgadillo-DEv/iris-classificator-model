@@ -7,8 +7,10 @@ WORKDIR /app
 # Instalar dependencias del sistema requeridas y aplicar parches de seguridad (DevSecOps)
 RUN apt-get update && apt-get upgrade -y && apt-get install -y --no-install-recommends \
     build-essential python3-dev && \
-    pip install --upgrade pip setuptools wheel && \
     rm -rf /var/lib/apt/lists/*
+
+# Actualizar pip, setuptools y wheel de forma segura
+RUN pip install --upgrade pip setuptools wheel
 
 # Copiar el archivo de dependencias
 COPY requirements.txt .
@@ -30,6 +32,10 @@ EXPOSE 5000
 # Variables de entorno
 ENV PYTHONPATH=/app
 ENV PORT=5000
+
+# Ejecutar como usuario no-root para mayor seguridad (DevSecOps best practice)
+RUN addgroup --system appgroup && adduser --system --ingroup appgroup appuser
+USER appuser
 
 # Comando para ejecutar FastAPI usando uvicorn
 CMD ["uvicorn", "deployment.api.app:app", "--host", "0.0.0.0", "--port", "5000"]
