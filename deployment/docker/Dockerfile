@@ -1,5 +1,5 @@
-# Usa una imagen base oficial de Python ligera
-FROM python:3.9-slim
+# Usa una imagen base oficial de Python ligera y estable (Debian Bookworm)
+FROM python:3.9-slim-bookworm
 
 # Establecer el directorio de trabajo
 WORKDIR /app
