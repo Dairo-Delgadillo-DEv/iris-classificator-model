@@ -238,6 +238,19 @@ deployment/api/
 
 ---
 
+## 🛡️ DevSecOps y Seguridad
+
+La seguridad es un pilar fundamental en este proyecto. Se han integrado herramientas y procesos para garantizar que tanto el código, como las dependencias y la infraestructura sean seguros desde el primer momento:
+
+- **Escaneo Automático de Código (SAST):** Análisis de vulnerabilidades con `Bandit`.
+- **Análisis de Dependencias (SCA):** Detección de paquetes con fallos de seguridad conocidos usando `Safety`.
+- **Seguridad en Contenedores:** Escaneo de la imagen de Docker utilizando `Trivy`.
+- **Prevención de Secretos:** Integración con `pre-commit` para evitar subir contraseñas al código.
+
+Para conocer más detalles del flujo, las herramientas y cómo ejecutarlas localmente, por favor consulta nuestra **[Guía de DevSecOps](DEVSECOPS.md)**.
+
+---
+
 ## 📈 Próximas Mejoras
 
 - [ ] Tests unitarios (`tests/`)

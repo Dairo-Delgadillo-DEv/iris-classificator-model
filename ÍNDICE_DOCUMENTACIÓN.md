@@ -137,6 +137,19 @@
 
 ---
 
+### 9. DEVSECOPS.md 🛡️
+**Qué es:** Guía sobre la seguridad automatizada del proyecto  
+**Cuándo leer:** Para entender cómo validamos la seguridad del código y contenedores  
+**Contiene:**
+- Explicación de DevSecOps
+- Flujo local e Integración Continua (CI/CD)
+- Herramientas: Bandit, Safety, Trivy y pre-commit
+- Cómo ejecutar el escaneo local
+
+**Lectura:** 10 minutos
+
+---
+
 ## 🎯 RUTAS DE LECTURA SEGÚN TU OBJETIVO
 
 ### Si quieres empezar YA:
@@ -188,6 +201,7 @@
 | RESUMEN_EJECUTIVO.md | 4 pag | Resumen todo | Tercero |
 | **MLOPS_GUIDE.md** | **20 pag** | **Guía completa** | **⭐ Principal** |
 | RESPUESTAS.md | 8 pag | Preguntas usuario | Cuando dudes |
+| DEVSECOPS.md | 3 pag | Seguridad automatizada | Cuando dudes / CI-CD |
 | ESTRUCTURA_COMPLETA.md | 6 pag | Mapa proyecto | Para navegar |
 | DIAGRAMAS.md | 7 pag | Visuales | Para entender |
 
@@ -235,6 +249,7 @@ Documentación/
 │   └── DIAGRAMAS.md (15 min)
 │
 └── 🗂️ REFERENCIA
+    ├── DEVSECOPS.md (10 min)
     ├── ESTRUCTURA_COMPLETA.md (20 min)
     └── ÍNDICE_DOCUMENTACIÓN.md (Este)
 ```
