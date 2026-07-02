@@ -12,11 +12,11 @@ RUN apt-get update && apt-get upgrade -y && apt-get install -y --no-install-reco
 # Actualizar pip, setuptools y wheel de forma segura
 RUN pip install --upgrade pip setuptools wheel
 
-# Copiar el archivo de dependencias
-COPY requirements.txt .
+# Copiar SOLO el archivo de dependencias de producción (sin bandit, safety, etc.)
+COPY requirements-prod.txt .
 
-# Instalar dependencias de Python
-RUN pip install --no-cache-dir -r requirements.txt
+# Instalar dependencias de Python (solo producción)
+RUN pip install --no-cache-dir -r requirements-prod.txt
 
 # Copiar el código del proyecto
 COPY src/ /app/src/

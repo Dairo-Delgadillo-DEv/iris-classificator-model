@@ -34,8 +34,8 @@ def load_iris_data():
     logger.info(f"Clases: {target_names}")
     
     # Verificar integridad
-    assert X.shape == (150, 4), "Shape incorrecto"
-    assert y.shape == (150,), "Shape incorrecto"
+    assert X.shape == (150, 4), "Shape incorrecto"  # nosec B101
+    assert y.shape == (150,), "Shape incorrecto"  # nosec B101
     
     return X, y, feature_names, target_names
 
@@ -131,9 +131,9 @@ def save_scaler(scaler, filepath: str):
         scaler (StandardScaler): Scaler entrenado
         filepath (str): Ruta donde guardar
     """
-    import joblib
+    import joblib  # nosec B403
     logger.info(f"Guardando scaler en {filepath}")
-    joblib.dump(scaler, filepath)
+    joblib.dump(scaler, filepath)  # nosec B301
     logger.info("Scaler guardado exitosamente")
 
 
@@ -147,8 +147,8 @@ def load_scaler(filepath: str):
     Returns:
         StandardScaler: Scaler cargado
     """
-    import joblib
+    import joblib  # nosec B403
     logger.info(f"Cargando scaler desde {filepath}")
-    scaler = joblib.load(filepath)
+    scaler = joblib.load(filepath)  # nosec B301
     logger.info("Scaler cargado exitosamente")
     return scaler

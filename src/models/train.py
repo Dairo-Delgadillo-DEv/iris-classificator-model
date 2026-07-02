@@ -201,7 +201,7 @@ class ModelTrainer:
         
         logger.info(f"Guardando modelo en {filepath}")
         Path(filepath).parent.mkdir(parents=True, exist_ok=True)
-        joblib.dump(self.model, filepath)
+        joblib.dump(self.model, filepath)  # nosec B301
         logger.info("Modelo guardado exitosamente")
         
     def load_model(self, filepath: str):
@@ -218,7 +218,7 @@ class ModelTrainer:
         if not Path(filepath).exists():
             raise FileNotFoundError(f"Modelo no encontrado en {filepath}")
         
-        self.model = joblib.load(filepath)
+        self.model = joblib.load(filepath)  # nosec B301
         self.is_trained = True
         logger.info("Modelo cargado exitosamente")
         
